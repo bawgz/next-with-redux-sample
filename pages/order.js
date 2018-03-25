@@ -7,6 +7,7 @@ import OrderComponent from "../components/order";
 import { initStore, addToOrder, removeFromOrder } from "../ducks";
 import menu from "../constants/menu-items";
 import toppings from "../constants/toppings";
+import withRoot from '../util/with-root';
 
 class Order extends React.Component {
   static getInitialProps () {
@@ -32,4 +33,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(Order)
+export default withRoot(withRedux(initStore, mapStateToProps, mapDispatchToProps)(Order));
