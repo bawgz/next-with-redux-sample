@@ -5,10 +5,21 @@ import {
     FormControl
   } from "material-ui/Form";
 import { Grid, Button, TextField, MenuItem } from "material-ui";
+import { withStyles } from 'material-ui/styles';
 
 import CheckboxGroup from "../../general/checkbox-group";
 import quantityOptions from "../../../constants/quantity-options";
 import { TWO } from "../../../constants/consts";
+
+// We can inject some CSS into the DOM.
+const styles = {
+    fullWidth: {
+      width: '100% !important'
+    },
+    pullRight: {
+        float: "right"
+    }
+};
 
 class OrderForm extends Component {
     constructor(props) {
@@ -51,11 +62,11 @@ class OrderForm extends Component {
     }
 
     render() {
-        const { toppingsOptions } = this.props;
+        const { toppingsOptions, classes } = this.props;
         return (
             <div>
                 <form>
-                    <FormControl className="full-width" component="fieldset">
+                    <FormControl className={classes.fullWidth} component="fieldset">
                         <FormLabel component="legend">Toppings</FormLabel>
                         <div className="order-form-inputs">
                             <Grid container>
@@ -92,9 +103,10 @@ class OrderForm extends Component {
                         </div>
                         <div>
                             <Button
-                                className="add-to-order-btn"
+                                className={classes.pullRight}
                                 variant="raised"
                                 onClick={this.handleSubmit.bind(this)}
+                                color="primary"
                             >
                                 Add to Order
                             </Button>
@@ -104,7 +116,7 @@ class OrderForm extends Component {
                 <style jsx>
                     {`
                         .full-width: {
-                            width: 100%;
+                            width: 100% !important;
                         }
                         .order-form-inputs {
                             margin-left: 20px;
@@ -125,4 +137,4 @@ OrderForm.propTypes = {
     handleAddToOrder: PropTypes.func
 };
 
-export default OrderForm;
+export default withStyles(styles)(OrderForm);
