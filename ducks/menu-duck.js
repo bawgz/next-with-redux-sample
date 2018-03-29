@@ -1,10 +1,11 @@
 import menuItems from "../constants/menu-items";
+import fetch from "isomorphic-fetch";
 
-const GET_MENU = "GET_MENU";
+const SET_MENU = "SET_MENU";
 
 export default (state = [], action = {}) => {
     switch (action.type) {
-        case GET_MENU: {
+        case SET_MENU: {
             return action.payload;
         }
         default: {
@@ -13,11 +14,20 @@ export default (state = [], action = {}) => {
     }
 };
 
-export const getMenu = () => {
+export const fetchMenu = () => {
+    console.log("fetching menu");
+    return async dispatch => {
+        const menu = await fetch("http://el-jarocho.herokuapp.com/api/menu");
+        const json = await menu.json();
+        dispatch(setMenu(json));
+    }
+};
+
+const setMenu = (menuItems) => {
     return (
         {
-            type: GET_MENU,
+            type: SET_MENU,
             payload: menuItems
         }
-    );
-};
+    )
+}

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import MenuItem from "./menu-item";
 
-const CreateOrder = ({ menu, handleAddToOrder, toppings }) => (
+const CreateOrder = ({ menu, handleAddToOrder }) => (
     <div>
         {
             menu.map((item) => (
@@ -14,7 +14,7 @@ const CreateOrder = ({ menu, handleAddToOrder, toppings }) => (
                     image={item.image}
                     price={item.price}
                     handleAddToOrder={handleAddToOrder}
-                    toppings={toppings}
+                    toppings={item.toppings}
                 />
             ))
         }

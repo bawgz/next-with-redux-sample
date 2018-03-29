@@ -20,7 +20,6 @@ export default (state = {}, action) => {
         case REMOVE_FROM_ORDER: {
             const orders = {  ...state };
             delete orders[action.payload];
-            console.log(orders);
             return orders;
         }
         default: {

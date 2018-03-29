@@ -11,14 +11,14 @@ const CheckboxGroup = ({ options, handleChange, optionsChecked }) => (
                         control={
                             <Checkbox
                                 checked={
-                                    optionsChecked[option] !== undefined
+                                    optionsChecked[option.name] !== undefined
                                 }
                                 onChange={(e) => handleChange(option, e)}
-                                value={option}
-                                label={option}
+                                value={option.name}
+                                label={option.name}
                             />
                         }
-                        label={option}
+                        label={option.name}
                     />
                 </div>
             ))

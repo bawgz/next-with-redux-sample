@@ -10,7 +10,6 @@ import { objectToCommaSeparatedString } from "../../../util/util-methods";
 
 const OrderItem = ({orderItem: {name, qty, price, toppings, key}, handleRemoveFromOrder}) => (
     <div>
-        { console.log(handleRemoveFromOrder) }
         <CardContent>
             <Grid container justify="space-between">
                 <Grid item xs={10}>

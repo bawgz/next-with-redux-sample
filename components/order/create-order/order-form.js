@@ -32,10 +32,10 @@ class OrderForm extends Component {
         this.renderCheckboxGroup = this.renderCheckboxGroup.bind(this);
     }
 
-    handleChange(name, event) {
-        const toppings = { ...this.state.toppings, [name]: event.target.checked };
+    handleChange(topping, event) {
+        const toppings = { ...this.state.toppings, [topping.name]: topping };
         if (!event.target.checked) {
-            delete toppings[name];
+            delete toppings[topping.name];
         }
         this.setState({ toppings });
     }
