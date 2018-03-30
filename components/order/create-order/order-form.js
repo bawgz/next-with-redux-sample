@@ -16,8 +16,9 @@ const styles = {
     fullWidth: {
       width: '100% !important'
     },
-    marginTop: {
-        marginTop: "27px"
+    buttonStyle: {
+        marginTop: "27px",
+        backgroundColor: "black"
     }
 };
 
@@ -103,7 +104,7 @@ class OrderForm extends Component {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Button
-                                        className={classes.marginTop}
+                                        className={classes.buttonStyle}
                                         variant="raised"
                                         onClick={this.handleSubmit.bind(this)}
                                         color="primary"
