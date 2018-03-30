@@ -6,7 +6,7 @@ import Grid from "material-ui/Grid";
 
 const Navbar = () => (
   <div>
-    <AppBar style={{backgroundColor: "black"}} position="static" variant="raised" color="primary">
+    <AppBar position="static" variant="raised" color="primary">
         <Grid container justify="center">
           <Grid item>
             <Toolbar>

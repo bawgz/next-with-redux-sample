@@ -17,8 +17,7 @@ const styles = {
       width: '100% !important'
     },
     buttonStyle: {
-        marginTop: "27px",
-        backgroundColor: "black"
+        marginTop: "27px"
     }
 };
 
