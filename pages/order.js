@@ -4,6 +4,7 @@ import withRedux from 'next-redux-wrapper';
 import { Grid } from "material-ui";
 
 import OrderComponent from "../components/order";
+import NavBar from "../components/general/nav-bar";
 import { initStore, addToOrder, removeFromOrder, fetchMenu } from "../ducks";
 import withRoot from '../util/with-root';
 
@@ -16,7 +17,14 @@ class Order extends React.Component {
     const { addToOrderAction, removeFromOrderAction, orderDetails, menu } = this.props;
       return (
         <div>
-          <OrderComponent handleAddToOrder={addToOrderAction} handleRemoveFromOrder={removeFromOrderAction} orderDetails={orderDetails} menu={menu} />
+          <Grid container>
+            <Grid item xs={12}>
+              <NavBar />            
+            </Grid>
+            <Grid item xs={12}>
+              <OrderComponent handleAddToOrder={addToOrderAction} handleRemoveFromOrder={removeFromOrderAction} orderDetails={orderDetails} menu={menu} />
+            </Grid>
+          </Grid>
         </div>
       );
   }
