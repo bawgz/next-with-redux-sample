@@ -2,20 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card, CardMedia, CardContent, Typography, Grid } from "material-ui";
 
+import MenuItemImg from "./menu-item-img";
 import OrderForm from "./order-form";
 
 const MenuItem = ({ name, description, image, price, handleAddToOrder, toppings }) => (
     <div>
       <Card raised={true} className="menu-item-card">
         <Grid container>
-            <Grid item xs={4}>
-                <CardMedia
-                    style={{ height: "200px" }}
+            <Grid item xs={12} sm={4}>
+                <MenuItemImg
                     image={image}
                     title={name}
                 />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={8}>
                 <CardContent>
                     <Grid container direction="column" justify="space-between">
                         <Grid item>

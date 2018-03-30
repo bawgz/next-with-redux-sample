@@ -7,10 +7,10 @@ import OrderDetails from "./order-details";
 const Order = ({ menu, handleAddToOrder, handleRemoveFromOrder, orderDetails }) => (
     <div>
         <Grid container>
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
                 <CreateOrder menu={menu} handleAddToOrder={handleAddToOrder} />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4}>
                 <OrderDetails handleRemoveFromOrder={handleRemoveFromOrder} orderDetails={orderDetails} />
             </Grid>
         </Grid>

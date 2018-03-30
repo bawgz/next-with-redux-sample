@@ -16,8 +16,8 @@ const styles = {
     fullWidth: {
       width: '100% !important'
     },
-    pullRight: {
-        float: "right"
+    marginTop: {
+        marginTop: "27px"
     }
 };
 
@@ -84,32 +84,34 @@ class OrderForm extends Component {
                                         )
                                     }
                                 </Grid>
+                                <Grid item xs={6}>
+                                    <TextField
+                                        select
+                                        label="QTY"
+                                        value={this.state.qty}
+                                        onChange={(e) => this.handleSelect("qty", e)}
+                                        margin="normal"
+                                    >
+                                        {
+                                            quantityOptions.map(option => (
+                                                <MenuItem key={option} value={option}>
+                                                    {option}
+                                                </MenuItem>
+                                            ))
+                                        }
+                                    </TextField>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Button
+                                        className={classes.marginTop}
+                                        variant="raised"
+                                        onClick={this.handleSubmit.bind(this)}
+                                        color="primary"
+                                    >
+                                        Add to Order
+                                    </Button>
+                                </Grid>
                             </Grid>
-                            <TextField
-                                select
-                                label="QTY"
-                                value={this.state.qty}
-                                onChange={(e) => this.handleSelect("qty", e)}
-                                margin="normal"
-                            >
-                                {
-                                    quantityOptions.map(option => (
-                                        <MenuItem key={option} value={option}>
-                                            {option}
-                                        </MenuItem>
-                                    ))
-                                }
-                            </TextField>
-                        </div>
-                        <div>
-                            <Button
-                                className={classes.pullRight}
-                                variant="raised"
-                                onClick={this.handleSubmit.bind(this)}
-                                color="primary"
-                            >
-                                Add to Order
-                            </Button>
                         </div>
                     </FormControl>
                 </form>
