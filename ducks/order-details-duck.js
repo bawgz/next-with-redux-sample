@@ -15,6 +15,7 @@ export default (state = {}, action) => {
                 newOrder.key = key;
                 orders[key] = newOrder;
             }
+            orders[key].price = orders[key].pricePerItem * orders[key].qty;
             return orders;
         }
         case REMOVE_FROM_ORDER: {

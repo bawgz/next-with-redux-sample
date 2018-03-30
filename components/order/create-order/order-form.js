@@ -45,9 +45,8 @@ class OrderForm extends Component {
     }
 
     handleSubmit() {
-        const { handleAddToOrder, name } = this.props;
-        const price = this.props.price * this.state.qty;
-        handleAddToOrder({ name, price, ...this.state });
+        const { handleAddToOrder, name, price } = this.props;
+        handleAddToOrder({ name, pricePerItem: price, ...this.state });
         this.setState({ toppings: {}, qty: 1 });
     }
 
