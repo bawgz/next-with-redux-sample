@@ -8,9 +8,14 @@ import Typography from "material-ui/Typography/Typography";
 import quantityOptions from "../../../constants/quantity-options";
 import { objectToCommaSeparatedString } from "../../../util/util-methods";
 
-const OrderItem = ({ orderItem: {name, qty, price, toppings, key}, handleRemoveFromOrder }) => (
-    <div className="order-item">
+const OrderItem = ({ orderItem: {name, qty, price, toppings, key}, handleRemoveFromOrder, handleChangeQty }) => (
+    <div>
         <Grid container alignItems="center">
+            <Grid item xs={2}>
+                <IconButton aria-label="Delete" onClick={() => handleRemoveFromOrder(key)}>
+                    <DeleteIcon />
+                </IconButton>
+            </Grid>
             <Grid item xs={5}>
                 <Typography variant="subheading" component="h3">
                     { name }
@@ -21,6 +26,7 @@ const OrderItem = ({ orderItem: {name, qty, price, toppings, key}, handleRemoveF
                 <TextField
                     select
                     value={qty}
+                    onChange={(e) => handleChangeQty({ key, qty: e.target.value })}
                 >
                     {
                         quantityOptions.map(option => (
@@ -33,11 +39,6 @@ const OrderItem = ({ orderItem: {name, qty, price, toppings, key}, handleRemoveF
             </Grid>
             <Grid item xs={2}>
                 <Typography>{ `$${price}` }</Typography>
-            </Grid>
-            <Grid item xs={2}>
-                <IconButton aria-label="Delete" onClick={() => handleRemoveFromOrder(key)}>
-                    <DeleteIcon />
-                </IconButton>
             </Grid>
         </Grid>
         <style jsx>

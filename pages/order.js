@@ -5,7 +5,7 @@ import { Grid } from "material-ui";
 
 import OrderComponent from "../components/order";
 import NavBar from "../components/general/nav-bar";
-import { initStore, addToOrder, removeFromOrder, fetchMenu } from "../ducks";
+import { initStore, addToOrder, removeFromOrder, fetchMenu, changeQty } from "../ducks";
 import withRoot from '../util/with-root';
 
 class Order extends React.Component {
@@ -14,7 +14,7 @@ class Order extends React.Component {
   }
   
   render() {
-    const { addToOrderAction, removeFromOrderAction, orderDetails, menu } = this.props;
+    const { addToOrderAction, removeFromOrderAction, orderDetails, menu, changeQtyAction } = this.props;
       return (
         <div>
           <Grid container>
@@ -22,7 +22,13 @@ class Order extends React.Component {
               <NavBar />            
             </Grid>
             <Grid item xs={12}>
-              <OrderComponent handleAddToOrder={addToOrderAction} handleRemoveFromOrder={removeFromOrderAction} orderDetails={orderDetails} menu={menu} />
+              <OrderComponent
+                handleAddToOrder={addToOrderAction}
+                handleRemoveFromOrder={removeFromOrderAction}
+                orderDetails={orderDetails}
+                menu={menu}
+                handleChangeQty={changeQtyAction}
+              />
             </Grid>
           </Grid>
         </div>
@@ -37,7 +43,8 @@ const mapStateToProps = ({ orderDetails, menu }) => ({
 const mapDispatchToProps = {
   addToOrderAction: addToOrder,
   removeFromOrderAction: removeFromOrder,
-  fetchMenuAction: fetchMenu
+  fetchMenuAction: fetchMenu,
+  changeQtyAction: changeQty
 }
 
 export default withRoot(withRedux(initStore, mapStateToProps, mapDispatchToProps)(Order));

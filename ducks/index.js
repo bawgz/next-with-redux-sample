@@ -2,15 +2,15 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import menu, { fetchMenu } from "./menu-duck";
-import orderDetails, { addToOrder, removeFromOrder } from "./order-details-duck";
+import orderDetails, { addToOrder, removeFromOrder, changeQty } from "./order-details-duck";
 import activeOrders, { getActiveOrders } from "./active-orders-duck";
 
-export { fetchMenu, addToOrder, removeFromOrder, getActiveOrders };
+export { fetchMenu, addToOrder, removeFromOrder, getActiveOrders, changeQty };
 
 
-const defaultInitialState = {
+export const defaultInitialState = {
   menu: [],
-  orderDetails: {},
+  orderDetails: { items: {}, total: 0 },
   activeOrders: []
 }
 

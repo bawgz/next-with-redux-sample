@@ -4,13 +4,13 @@ import { Card, CardContent, Typography, CardActions, Button, Grid, Divider } fro
 
 import OrderItem from "./order-item2";
 
-const OrderDetails = ({ orderDetails, handleRemoveFromOrder }) => (
+const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty }) => (
     <div>
       <Card raised={true}>
         <CardContent>
           <Typography variant="headline" component="h2">Order Summary</Typography>
           {
-            Object.keys(orderDetails).length === 0 ? (
+            Object.keys(orderDetails.items).length === 0 ? (
               <div>
                 <Divider />
                 <div className="margin-top">
@@ -22,6 +22,7 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder }) => (
             ) : (
               <div className="margin-top-10">
                 <Grid container>
+                  <Grid item xs={2} />
                   <Grid item xs={5}>
                     <Typography color="textSecondary">ITEM</Typography>
                   </Grid>
@@ -34,25 +35,38 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder }) => (
                 </Grid>
                 <Divider />
                 { 
-                  Object.keys(orderDetails).map((orderItem, i) => (
-                    <OrderItem key={i} orderItem={orderDetails[orderItem]} handleRemoveFromOrder={handleRemoveFromOrder} />
+                  Object.keys(orderDetails.items).map((orderItem, i) => (
+                    <OrderItem
+                      key={i}
+                      orderItem={orderDetails.items[orderItem]}
+                      handleRemoveFromOrder={handleRemoveFromOrder}
+                      handleChangeQty={handleChangeQty}
+                    />
                 ))}
+                <Grid container>
+                  <Grid item xs={12}>
+                    <Divider />
+                  </Grid>
+                  <Grid item xs={7}></Grid>
+                  <Grid item xs={3}>
+                    <Typography>TOTAL: </Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography>{ `$${orderDetails.total}` }</Typography>
+                  </Grid>
+                  <Grid item></Grid>
+                  <Grid container justify="center">
+                    <Grid item>
+                      <div className="margin-top-10">
+                        <Button variant="raised" color="primary">Checkout</Button>
+                      </div>
+                    </Grid>
+                  </Grid>
+                </Grid>
               </div>
             )
           }
         </CardContent>
-        {
-          Object.keys(orderDetails).length !== 0 &&
-          (
-            <CardActions>
-              <Grid container justify="center">
-                <Grid item>
-                  <Button variant="raised" color="primary">Checkout</Button>
-                </Grid>
-              </Grid>
-            </CardActions>
-          )
-        }
       </Card>
       <style jsx>
           {`
