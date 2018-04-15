@@ -23,9 +23,15 @@ class MyDocument extends Document {
           />
           {/* PWA primary color */}
           <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
+          <script src="https://js.stripe.com/v3/"></script>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/global.css"
           />
         </Head>
         <body>

@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card, CardContent, Typography, CardActions, Button, Grid, Divider } from "material-ui";
+import Link from "next/link";
 
-import OrderItem from "./order-item2";
+import OrderItem from "./order-item";
 
-const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty }) => (
+const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty, setIsCheckoutDialogOpen }) => (
     <div>
       <Card raised={true}>
         <CardContent>
@@ -58,7 +59,13 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty }) 
                   <Grid container justify="center">
                     <Grid item>
                       <div className="margin-top-10">
-                        <Button variant="raised" color="primary">Checkout</Button>
+                        <Button
+                          onClick={() => setIsCheckoutDialogOpen(true)}
+                          variant="raised"
+                          color="primary"
+                        >
+                          Checkout
+                        </Button>
                       </div>
                     </Grid>
                   </Grid>

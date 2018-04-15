@@ -1,5 +1,7 @@
-const express = require('express')
-const next = require('next')
+const express = require('express');
+const next = require('next');
+var bodyParser = require('body-parser');
+
 const dataService = require("./data-service");
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -9,12 +11,24 @@ const handle = app.getRequestHandler()
 
 app.prepare()
 .then(() => {
-  const server = express()
+  const server = express();
+
+  server.use(bodyParser.json());
 
   server.get('/api/menu', async (req, res) => {
     try {
       const menu = await dataService.getMenu();
       res.send(menu);
+    } catch (err) {
+      throw err;
+    }
+  });
+
+  server.post('/api/checkout', async (req, res) => {
+    try {
+      console.log("--------------req--------------");
+      console.dir(req.body);
+      res.send(true)
     } catch (err) {
       throw err;
     }
