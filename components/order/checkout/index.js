@@ -4,13 +4,13 @@ import { Elements } from "react-stripe-elements";
 
 import CheckoutFormStripe from "./checkout-form-stripe";
 
-const Checkout = ({ isCheckoutDialogOpen, setIsCheckoutDialogOpen }) => (
+const Checkout = ({ isCheckoutDialogOpen, setIsCheckoutDialogOpen, orderDetails, checkout }) => (
     <div>
         <Dialog open={isCheckoutDialogOpen} onClose={() => setIsCheckoutDialogOpen(false)}>
             <DialogTitle>Checkout</DialogTitle>
             <DialogContent>
                 <Elements>
-                    <CheckoutFormStripe />
+                    <CheckoutFormStripe orderDetails={orderDetails} checkout={checkout} />
                 </Elements>
             </DialogContent>
         </Dialog>

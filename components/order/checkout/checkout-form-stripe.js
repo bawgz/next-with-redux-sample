@@ -37,21 +37,29 @@ class CheckoutFormStripe extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ""
+            name: "",
+            formError: ""
         }
     }
 
     async handleOnSubmit(ev) {
         const { name } = this.state;
-        const { stripe } = this.props;
+        const { stripe, checkout, orderDetails } = this.props;
         // We don't want to let default form submission happen here, which would refresh the page.
         ev.preventDefault();
     
         // Within the context of `Elements`, this call to createToken knows which Element to
         // tokenize, since there's only one in this group.
         const resp = await stripe.createToken({ name });
+        
         console.log(resp);
         console.log('Received Stripe token:', resp.token);
+        const order = { ...this.props.orderDetails, name };
+        if (!resp.error) {
+            await checkout(order, resp.token.id);
+        } else {
+            this.setState({ formError: resp.error.message });
+        }
     }
     
     render() {
@@ -77,6 +85,7 @@ class CheckoutFormStripe extends React.Component {
                         />
                     </label>
                     <Button type="submit">Confirm Order</Button>
+                    <p>{ this.state.formError }</p>
                 </form>
             </div>
         );

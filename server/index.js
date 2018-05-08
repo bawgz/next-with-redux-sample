@@ -3,6 +3,7 @@ const next = require('next');
 var bodyParser = require('body-parser');
 
 const dataService = require("./data-service");
+const stripeService = require("./stripe-service");
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || 3000;
@@ -24,13 +25,24 @@ app.prepare()
     }
   });
 
-  server.post('/api/checkout', async (req, res) => {
+  server.post('/api/checkout', async (req, res, next) => {
+    const stripeCallback = (err, charge) => {
+      console.log("------------err----------------");
+      console.log(err);
+      console.log("------------charge-----------");
+      console.log(charge);
+      if (err) {
+        next(err);
+      } else {
+        res.send(charge);
+      }
+    };
     try {
       console.log("--------------req--------------");
       console.dir(req.body);
-      res.send(true)
+      const charge = await stripeService.chargeCard(req.body, stripeCallback);
     } catch (err) {
-      throw err;
+      next(err);
     }
   });
 
