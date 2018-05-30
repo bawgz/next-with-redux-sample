@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { MuiThemeProvider } from 'material-ui/styles';
 import CssBaseline from 'material-ui/CssBaseline';
 import getPageContext from './get-page-context';
+import { Grid } from "material-ui";
+
+import NavBar from "../components/general/nav-bar";
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
@@ -31,7 +34,14 @@ function withRoot(Component) {
         >
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <Component {...this.props} />
+          <Grid container>
+            <Grid item xs={12}>
+                <NavBar />            
+            </Grid>
+            <Grid item xs={12}>
+                <Component {...this.props} />
+            </Grid>
+          </Grid>
         </MuiThemeProvider>
       );
     }

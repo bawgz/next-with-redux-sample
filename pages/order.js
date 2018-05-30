@@ -1,11 +1,11 @@
 import React from 'react';
-import withRedux from 'next-redux-wrapper';
+import { connect } from 'react-redux';
 import { Grid } from "material-ui";
 import { StripeProvider } from 'react-stripe-elements';
 
 import OrderComponent from "../components/order";
 import NavBar from "../components/general/nav-bar";
-import { initStore, addToOrder, removeFromOrder, fetchMenu, changeQty, checkout } from "../ducks";
+import { addToOrder, removeFromOrder, fetchMenu, changeQty, checkout } from "../ducks";
 import withRoot from '../util/with-root';
 
 class Order extends React.Component {
@@ -33,34 +33,27 @@ class Order extends React.Component {
   render() {
     const { addToOrderAction, removeFromOrderAction, orderDetails, menu, changeQtyAction, checkoutAction } = this.props;
     const { loadSqript, sqriptLoaded, allScriptsLoaded, isCheckoutDialogOpen } = this.state;
-      return (
-        <div>
-          <Grid container>
-            <Grid item xs={12}>
-              <NavBar />            
-            </Grid>
-            <Grid item xs={12}>
-              <StripeProvider stripe={this.state.stripe}>
-                <OrderComponent
-                  handleAddToOrder={addToOrderAction}
-                  handleRemoveFromOrder={removeFromOrderAction}
-                  orderDetails={orderDetails}
-                  menu={menu}
-                  handleChangeQty={changeQtyAction}
-                  sqriptLoaded={sqriptLoaded}
-                  loadSqript={loadSqript}
-                  allScriptsLoaded={allScriptsLoaded}
-                  handleOnLoadScript={this.handleOnLoadScript}
-                  handleLastScriptLoaded={this.handleLastScriptLoaded}
-                  checkout={checkoutAction}
-                  isCheckoutDialogOpen={isCheckoutDialogOpen}
-                  setIsCheckoutDialogOpen={this.setIsCheckoutDialogOpen}
-                />
-              </StripeProvider>
-            </Grid>
-          </Grid>
-        </div>
-      );
+    return (
+      <div>
+        <StripeProvider stripe={this.state.stripe}>
+            <OrderComponent
+              handleAddToOrder={addToOrderAction}
+              handleRemoveFromOrder={removeFromOrderAction}
+              orderDetails={orderDetails}
+              menu={menu}
+              handleChangeQty={changeQtyAction}
+              sqriptLoaded={sqriptLoaded}
+              loadSqript={loadSqript}
+              allScriptsLoaded={allScriptsLoaded}
+              handleOnLoadScript={this.handleOnLoadScript}
+              handleLastScriptLoaded={this.handleLastScriptLoaded}
+              checkout={checkoutAction}
+              isCheckoutDialogOpen={isCheckoutDialogOpen}
+              setIsCheckoutDialogOpen={this.setIsCheckoutDialogOpen}
+            />
+        </StripeProvider>
+      </div>
+    );
   }
 }
 
@@ -76,4 +69,4 @@ const mapDispatchToProps = {
   checkoutAction: checkout
 }
 
-export default withRoot(withRedux(initStore, mapStateToProps, mapDispatchToProps)(Order));
+export default withRoot(connect(mapStateToProps, mapDispatchToProps)(Order));
