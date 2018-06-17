@@ -2,20 +2,31 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 import menu, { fetchMenu } from './menu-duck';
-import orderDetails, { addToOrder, removeFromOrder, changeQty } from './order-details-duck';
+import orderDetails, {
+  addToOrder,
+  removeFromOrder,
+  changeQty,
+} from './order-details-duck';
 import activeOrders, { getActiveOrders } from './active-orders-duck';
 import loading, { setLoading } from './loading-duck';
 import userOrders, { checkout } from './user-orders-duck';
 
-export { fetchMenu, addToOrder, removeFromOrder, getActiveOrders, changeQty, setLoading, checkout };
-
+export {
+  fetchMenu,
+  addToOrder,
+  removeFromOrder,
+  getActiveOrders,
+  changeQty,
+  setLoading,
+  checkout,
+};
 
 export const defaultInitialState = {
   menu: [],
   orderDetails: { items: {}, total: 0 },
   activeOrders: [],
   loading: false,
-  userOrders: [],
+  userOrders: {},
 };
 
 export const reducer = combineReducers({
@@ -26,8 +37,9 @@ export const reducer = combineReducers({
   userOrders,
 });
 
-export const initStore = (initialState = defaultInitialState) => createStore(
-  reducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(thunkMiddleware)),
-);
+export const initStore = (initialState = defaultInitialState) =>
+  createStore(
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware)),
+  );

@@ -1,28 +1,36 @@
 import PropTypes from 'prop-types';
 import hashmapPropType from 'hashmap-prop-type';
 
-export const toppingsPropTypes = hashmapPropType(PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-}));
+export const toppingsPropTypes = hashmapPropType(
+  PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+);
 
-export const toppingsArrayPropTypes = PropTypes.arrayOf(PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-}));
+export const toppingsArrayPropTypes = PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+);
 
-export const menuPropTypes = PropTypes.arrayOf(PropTypes.shape({
-  description: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  toppings: toppingsArrayPropTypes.isRequired,
-}));
+export const menuPropTypes = PropTypes.arrayOf(
+  PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    toppings: toppingsArrayPropTypes.isRequired,
+  }),
+);
 
-export const optionsCheckedPropTypes = hashmapPropType(PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-}));
+export const optionsCheckedPropTypes = hashmapPropType(
+  PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+);
 
 export const orderItemPropTypes = PropTypes.shape({
   key: PropTypes.string.isRequired,

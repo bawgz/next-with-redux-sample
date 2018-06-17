@@ -9,7 +9,8 @@ const inputFieldStyle = {
   border: 'none',
   maxWidth: '500px',
   padding: '10px 14px',
-  boxShadow: 'rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px',
+  boxShadow:
+    'rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px',
   borderRadius: '4px',
   background: 'white',
 };
@@ -86,7 +87,7 @@ class CheckoutFormStripe extends React.Component {
             />
           </label>
           <Button type="submit">Confirm Order</Button>
-          <p>{ this.state.formError }</p>
+          <p>{this.state.formError}</p>
         </form>
       </div>
     );

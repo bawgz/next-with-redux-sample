@@ -5,7 +5,13 @@ import { StripeProvider } from 'react-stripe-elements';
 
 import { menuPropTypes, orderDetailsPropTypes } from '../constants/prop-types';
 import OrderComponent from '../components/order';
-import { addToOrder, removeFromOrder, fetchMenu, changeQty, checkout } from '../ducks';
+import {
+  addToOrder,
+  removeFromOrder,
+  fetchMenu,
+  changeQty,
+  checkout,
+} from '../ducks';
 import withRoot from '../util/with-root';
 
 class Order extends React.Component {
@@ -20,7 +26,10 @@ class Order extends React.Component {
 
   componentDidMount() {
     // needs to be in componentDidMount as this runs on client only and window object needed.
-    this.setState({ stripe: window.Stripe('pk_test_WdfT8LFHRxAs9HmdVyKn56x1') }); // eslint-disable-line react/no-did-mount-set-state
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      stripe: window.Stripe('pk_test_WdfT8LFHRxAs9HmdVyKn56x1'),
+    });
   }
 
   static async getInitialProps({ store }) {
@@ -33,10 +42,18 @@ class Order extends React.Component {
 
   render() {
     const {
-      addToOrderAction, removeFromOrderAction, orderDetails, menu, changeQtyAction, checkoutAction,
+      addToOrderAction,
+      removeFromOrderAction,
+      orderDetails,
+      menu,
+      changeQtyAction,
+      checkoutAction,
     } = this.props;
     const {
-      loadSqript, sqriptLoaded, allScriptsLoaded, isCheckoutDialogOpen,
+      loadSqript,
+      sqriptLoaded,
+      allScriptsLoaded,
+      isCheckoutDialogOpen,
     } = this.state;
     return (
       <div>
@@ -72,7 +89,8 @@ Order.propTypes = {
 };
 
 const mapStateToProps = ({ orderDetails, menu }) => ({
-  orderDetails, menu,
+  orderDetails,
+  menu,
 });
 
 const mapDispatchToProps = {
@@ -83,4 +101,9 @@ const mapDispatchToProps = {
   checkoutAction: checkout,
 };
 
-export default withRoot(connect(mapStateToProps, mapDispatchToProps)(Order));
+export default withRoot(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Order)
+);

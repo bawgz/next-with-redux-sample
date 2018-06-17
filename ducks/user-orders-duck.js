@@ -17,7 +17,7 @@ export default (state = [], action) => {
   }
 };
 
-export const checkout = (orderParam, tokenId) => async (dispatch) => {
+export const checkout = (orderParam, tokenId) => async dispatch => {
   dispatch(setLoading(true));
   // make this a post
   // probably better to fetch from db instead of add to redux like this/????
@@ -26,7 +26,7 @@ export const checkout = (orderParam, tokenId) => async (dispatch) => {
   console.log(JSON.stringify(order));
   const chargeInfo = { tokenId, price: order.total };
   try {
-    const charge = await fetch('http://el-jarocho.herokuapp.com/api/checkout', {
+    const charge = await fetch('http://localhost:5000/api/checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

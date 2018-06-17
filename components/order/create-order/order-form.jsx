@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  FormLabel,
-  FormControl,
-} from 'material-ui/Form';
+import { FormLabel, FormControl } from 'material-ui/Form';
 import { Grid, Button, TextField, MenuItem } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 
@@ -71,14 +68,14 @@ class OrderForm extends Component {
             <div className="order-form-inputs">
               <Grid container>
                 <Grid item xs={6}>
-                  {
-                    this.renderCheckboxGroup(toppingsOptions.slice(0, toppingsOptions.length / TWO))
-                  }
+                  {this.renderCheckboxGroup(
+                    toppingsOptions.slice(0, toppingsOptions.length / TWO),
+                  )}
                 </Grid>
                 <Grid item xs={6}>
-                  {
-                    this.renderCheckboxGroup(toppingsOptions.slice(toppingsOptions.length / TWO))
-                  }
+                  {this.renderCheckboxGroup(
+                    toppingsOptions.slice(toppingsOptions.length / TWO),
+                  )}
                 </Grid>
                 <Grid item xs={6}>
                   <TextField
@@ -88,13 +85,11 @@ class OrderForm extends Component {
                     onChange={e => this.handleSelect('qty', e)}
                     margin="normal"
                   >
-                    {
-                      quantityOptions.map(option => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))
-                    }
+                    {quantityOptions.map(option => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
                   </TextField>
                 </Grid>
                 <Grid item xs={6}>
@@ -114,13 +109,13 @@ class OrderForm extends Component {
         <style jsx>
           {`
             .full-width: {
-                width: 100% !important;
+              width: 100% !important;
             }
             .order-form-inputs {
-                margin-left: 20px;
+              margin-left: 20px;
             }
             .add-to-order-btn {
-                float: right;
+              float: right;
             }
           `}
         </style>
@@ -133,10 +128,12 @@ OrderForm.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   handleAddToOrder: PropTypes.func.isRequired,
-  toppingsOptions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })).isRequired,
+  toppingsOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ).isRequired,
   classes: PropTypes.shape({
     fullWidth: PropTypes.string.isRequired,
     buttonStyle: PropTypes.string.isRequired,

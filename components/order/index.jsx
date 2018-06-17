@@ -2,14 +2,23 @@ import React from 'react';
 import { Grid } from 'material-ui';
 import PropTypes from 'prop-types';
 
-import { menuPropTypes, orderDetailsPropTypes } from '../../constants/prop-types';
+import {
+  menuPropTypes,
+  orderDetailsPropTypes,
+} from '../../constants/prop-types';
 import CreateOrder from './create-order';
 import OrderDetails from './order-details';
 import Checkout from './checkout';
 
 const Order = ({
-  menu, handleAddToOrder, handleRemoveFromOrder, orderDetails, handleChangeQty,
-  checkout, isCheckoutDialogOpen, setIsCheckoutDialogOpen,
+  menu,
+  handleAddToOrder,
+  handleRemoveFromOrder,
+  orderDetails,
+  handleChangeQty,
+  checkout,
+  isCheckoutDialogOpen,
+  setIsCheckoutDialogOpen,
 }) => (
   <div>
     <Grid container>

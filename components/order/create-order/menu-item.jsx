@@ -6,27 +6,27 @@ import MenuItemImg from './menu-item-img';
 import OrderForm from './order-form';
 
 const MenuItem = ({
-  name, description, image, price, handleAddToOrder, toppings,
+  name,
+  description,
+  image,
+  price,
+  handleAddToOrder,
+  toppings,
 }) => (
   <div>
     <Card raised className="menu-item-card">
       <Grid container>
         <Grid item xs={12} sm={4}>
-          <MenuItemImg
-            image={image}
-            title={name}
-          />
+          <MenuItemImg image={image} title={name} />
         </Grid>
         <Grid item xs={12} sm={8}>
           <CardContent>
             <Grid container direction="column" justify="space-between">
               <Grid item>
                 <Typography variant="headline" component="h2">
-                  { name }
+                  {name}
                 </Typography>
-                <Typography component="p">
-                  { description }
-                </Typography>
+                <Typography component="p">{description}</Typography>
               </Grid>
               <Grid item>
                 <OrderForm
@@ -44,14 +44,13 @@ const MenuItem = ({
     </Card>
     <style jsx>
       {`
-            .menu-item-card: {
-                margin: 7px;
-            }
-            .menu-item-img: {
-                height: 200px;
-            }
-
-        `}
+        .menu-item-card: {
+          margin: 7px;
+        }
+        .menu-item-img: {
+          height: 200px;
+        }
+      `}
     </style>
   </div>
 );
@@ -62,10 +61,12 @@ MenuItem.propTypes = {
   image: PropTypes.string.isRequired,
   handleAddToOrder: PropTypes.func.isRequired,
   price: PropTypes.number.isRequired,
-  toppings: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })).isRequired,
+  toppings: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default MenuItem;

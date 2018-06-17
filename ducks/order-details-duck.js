@@ -9,9 +9,9 @@ export default (state = defaultInitialState.orderDetails, action) => {
     case ADD_TO_ORDER: {
       const newOrder = action.payload;
       const orders = { ...state };
-      const key = `${newOrder.name}-${
-        Object.keys(newOrder.toppings).sort().map(topping => (topping))
-      }`;
+      const key = `${newOrder.name}-${Object.keys(newOrder.toppings)
+        .sort()
+        .map(topping => topping)}`;
       const order = orders.items[key];
       newOrder.price = newOrder.pricePerItem * newOrder.qty;
       if (order) {
@@ -48,23 +48,17 @@ export default (state = defaultInitialState.orderDetails, action) => {
   }
 };
 
-export const addToOrder = menuItem => (
-  {
-    type: ADD_TO_ORDER,
-    payload: menuItem,
-  }
-);
+export const addToOrder = menuItem => ({
+  type: ADD_TO_ORDER,
+  payload: menuItem,
+});
 
-export const removeFromOrder = key => (
-  {
-    type: REMOVE_FROM_ORDER,
-    payload: key,
-  }
-);
+export const removeFromOrder = key => ({
+  type: REMOVE_FROM_ORDER,
+  payload: key,
+});
 
-export const changeQty = changeDetails => (
-  {
-    type: CHANGE_QTY,
-    payload: changeDetails,
-  }
-);
+export const changeQty = changeDetails => ({
+  type: CHANGE_QTY,
+  payload: changeDetails,
+});

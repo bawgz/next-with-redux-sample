@@ -11,9 +11,7 @@ export default (state = false, action) => {
   }
 };
 
-export const setLoading = isLoading => (
-  {
-    type: SET_LOADING,
-    payload: isLoading,
-  }
-);
+export const setLoading = isLoading => ({
+  type: SET_LOADING,
+  payload: isLoading,
+});

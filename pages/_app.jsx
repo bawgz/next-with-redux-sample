@@ -7,7 +7,9 @@ import { initStore } from '../ducks';
 export default withRedux(initStore)(class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     return {
-      pageProps: (Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+      pageProps: Component.getInitialProps
+        ? await Component.getInitialProps(ctx)
+        : {},
     };
   }
 

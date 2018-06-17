@@ -10,22 +10,27 @@ import { orderItemPropTypes } from '../../../constants/prop-types';
 import objectToCommaSeparatedString from '../../../util/util-methods';
 
 const OrderItem = ({
-  orderItem: {
-    name, qty, price, toppings, key,
-  }, handleRemoveFromOrder, handleChangeQty,
+  orderItem: { name, qty, price, toppings, key },
+  handleRemoveFromOrder,
+  handleChangeQty,
 }) => (
   <div>
     <Grid container alignItems="center">
       <Grid item xs={2}>
-        <IconButton aria-label="Delete" onClick={() => handleRemoveFromOrder(key)}>
+        <IconButton
+          aria-label="Delete"
+          onClick={() => handleRemoveFromOrder(key)}
+        >
           <DeleteIcon />
         </IconButton>
       </Grid>
       <Grid item xs={5}>
         <Typography variant="subheading" component="h3">
-          { name }
+          {name}
         </Typography>
-        <Typography color="textSecondary">{ objectToCommaSeparatedString(toppings) }</Typography>
+        <Typography color="textSecondary">
+          {objectToCommaSeparatedString(toppings)}
+        </Typography>
       </Grid>
       <Grid item xs={3}>
         <TextField
@@ -33,25 +38,23 @@ const OrderItem = ({
           value={qty}
           onChange={e => handleChangeQty({ key, qty: e.target.value })}
         >
-          {
-                        quantityOptions.map(option => (
-                          <MenuItem key={option} value={option}>
-                            {option}
-                          </MenuItem>
-                        ))
-                    }
+          {quantityOptions.map(option => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </TextField>
       </Grid>
       <Grid item xs={2}>
-        <Typography>{ `$${price}` }</Typography>
+        <Typography>{`$${price}`}</Typography>
       </Grid>
     </Grid>
     <style jsx>
       {`
-            .order-item {
-              margin-top: 10px;
-            }
-          `}
+        .order-item {
+          margin-top: 10px;
+        }
+      `}
     </style>
   </div>
 );

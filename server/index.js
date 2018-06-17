@@ -10,7 +10,8 @@ const port = process.env.PORT || 3000;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-app.prepare()
+app
+  .prepare()
   .then(() => {
     const server = express();
 
@@ -43,12 +44,12 @@ app.prepare()
 
     server.get('*', (req, res) => handle(req, res));
 
-    server.listen(port, (err) => {
+    server.listen(port, err => {
       if (err) throw err;
       console.log(`> Ready on http://localhost:${port}`);
     });
   })
-  .catch((ex) => {
+  .catch(ex => {
     console.error(ex.stack);
     process.exit(1);
   });

@@ -7,10 +7,16 @@ import { orderDetailsPropTypes } from '../../../constants/prop-types';
 import CheckoutFormStripe from './checkout-form-stripe';
 
 const Checkout = ({
-  isCheckoutDialogOpen, setIsCheckoutDialogOpen, orderDetails, checkout,
+  isCheckoutDialogOpen,
+  setIsCheckoutDialogOpen,
+  orderDetails,
+  checkout,
 }) => (
   <div>
-    <Dialog open={isCheckoutDialogOpen} onClose={() => setIsCheckoutDialogOpen(false)}>
+    <Dialog
+      open={isCheckoutDialogOpen}
+      onClose={() => setIsCheckoutDialogOpen(false)}
+    >
       <DialogTitle>Checkout</DialogTitle>
       <DialogContent>
         <Elements>

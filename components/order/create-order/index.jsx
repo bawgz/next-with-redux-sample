@@ -6,19 +6,17 @@ import MenuItem from './menu-item';
 
 const CreateOrder = ({ menu, handleAddToOrder }) => (
   <div>
-    {
-      menu.map(item => (
-        <MenuItem
-          key={item.id}
-          name={item.name}
-          description={item.description}
-          image={item.image}
-          price={item.price}
-          handleAddToOrder={handleAddToOrder}
-          toppings={item.toppings}
-        />
-      ))
-    }
+    {menu.map(item => (
+      <MenuItem
+        key={item.id}
+        name={item.name}
+        description={item.description}
+        image={item.image}
+        price={item.price}
+        handleAddToOrder={handleAddToOrder}
+        toppings={item.toppings}
+      />
+    ))}
   </div>
 );
 

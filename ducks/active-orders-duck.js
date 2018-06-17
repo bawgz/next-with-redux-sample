@@ -14,10 +14,8 @@ export default (state = [], action = {}) => {
 
 export const getActiveOrders = () => {
   const activeOrders = [{ id: 1, item: 'taco' }, { id: 2, item: 'hamburger' }];
-  return (
-    {
-      type: GET_ACTIVE_ORDERS,
-      payload: activeOrders,
-    }
-  );
+  return {
+    type: GET_ACTIVE_ORDERS,
+    payload: activeOrders,
+  };
 };
