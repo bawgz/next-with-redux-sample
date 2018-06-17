@@ -1,16 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Card, CardContent, Typography, CardActions, Button, Grid, Divider } from "material-ui";
-import Link from "next/link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardContent, Typography, Button, Grid, Divider } from 'material-ui';
+import { orderDetailsPropTypes } from '../../../constants/prop-types';
 
-import OrderItem from "./order-item";
+import OrderItem from './order-item';
 
-const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty, setIsCheckoutDialogOpen }) => (
-    <div>
-      <Card raised={true}>
-        <CardContent>
-          <Typography variant="headline" component="h2">Order Summary</Typography>
-          {
+const OrderDetails = ({
+  orderDetails, handleRemoveFromOrder, handleChangeQty, setIsCheckoutDialogOpen,
+}) => (
+  <div>
+    <Card raised>
+      <CardContent>
+        <Typography variant="headline" component="h2">Order Summary</Typography>
+        {
             Object.keys(orderDetails.items).length === 0 ? (
               <div>
                 <Divider />
@@ -35,10 +37,10 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty, se
                   </Grid>
                 </Grid>
                 <Divider />
-                { 
-                  Object.keys(orderDetails.items).map((orderItem, i) => (
+                {
+                  Object.keys(orderDetails.items).map(orderItem => (
                     <OrderItem
-                      key={i}
+                      key={orderItem}
                       orderItem={orderDetails.items[orderItem]}
                       handleRemoveFromOrder={handleRemoveFromOrder}
                       handleChangeQty={handleChangeQty}
@@ -48,14 +50,14 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty, se
                   <Grid item xs={12}>
                     <Divider />
                   </Grid>
-                  <Grid item xs={7}></Grid>
+                  <Grid item xs={7} />
                   <Grid item xs={3}>
                     <Typography>TOTAL: </Typography>
                   </Grid>
                   <Grid item xs={2}>
                     <Typography>{ `$${orderDetails.total}` }</Typography>
                   </Grid>
-                  <Grid item></Grid>
+                  <Grid item />
                   <Grid container justify="center">
                     <Grid item>
                       <div className="margin-top-10">
@@ -73,10 +75,10 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty, se
               </div>
             )
           }
-        </CardContent>
-      </Card>
-      <style jsx>
-          {`
+      </CardContent>
+    </Card>
+    <style jsx>
+      {`
             .margin-top {
               margin-top: 20px;
             }
@@ -84,13 +86,15 @@ const OrderDetails = ({ orderDetails, handleRemoveFromOrder, handleChangeQty, se
               margin-top: 10px;
             }
           `}
-      </style>
-    </div>
+    </style>
+  </div>
 );
 
 OrderDetails.propTypes = {
-  orderDetails: PropTypes.object,
-  removeFromOrderAction: PropTypes.func
+  orderDetails: orderDetailsPropTypes.isRequired,
+  handleRemoveFromOrder: PropTypes.func.isRequired,
+  handleChangeQty: PropTypes.func.isRequired,
+  setIsCheckoutDialogOpen: PropTypes.func.isRequired,
 };
 
 export default OrderDetails;

@@ -1,1 +1,1 @@
-export const TWO = 2;
+export default 2;

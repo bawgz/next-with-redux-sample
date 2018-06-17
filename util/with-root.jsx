@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from 'material-ui/styles';
 import CssBaseline from 'material-ui/CssBaseline';
-import getPageContext from './get-page-context';
-import { Grid } from "material-ui";
+import Grid from 'material-ui/Grid';
 
-import NavBar from "../components/general/nav-bar";
+import getPageContext from './get-page-context';
+import NavBar from '../components/general/nav-bar';
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
     constructor(props, context) {
       super(props, context);
-
       this.pageContext = this.props.pageContext || getPageContext();
     }
 
@@ -22,8 +21,6 @@ function withRoot(Component) {
         jssStyles.parentNode.removeChild(jssStyles);
       }
     }
-
-    pageContext = null;
 
     render() {
       // MuiThemeProvider makes the theme available down the React tree thanks to React context.
@@ -36,10 +33,10 @@ function withRoot(Component) {
           <CssBaseline />
           <Grid container>
             <Grid item xs={12}>
-                <NavBar />            
+              <NavBar />
             </Grid>
             <Grid item xs={12}>
-                <Component {...this.props} />
+              <Component {...this.props} />
             </Grid>
           </Grid>
         </MuiThemeProvider>
@@ -48,10 +45,11 @@ function withRoot(Component) {
   }
 
   WithRoot.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types, react/require-default-props
     pageContext: PropTypes.object,
   };
 
-  WithRoot.getInitialProps = ctx => {
+  WithRoot.getInitialProps = (ctx) => {
     if (Component.getInitialProps) {
       return Component.getInitialProps(ctx);
     }
