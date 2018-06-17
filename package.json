@@ -7,11 +7,16 @@
     "start": "NODE_ENV=production node server/index.js",
     "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "precommit": "lint-staged && eslint"
+    "lint": "eslint --fix",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,json,css,md}": [
       "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
       "git add"
     ]
   },
