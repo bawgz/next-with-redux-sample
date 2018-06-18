@@ -1,6 +1,6 @@
 import React from 'react';
 import { withContentRect } from 'react-measure';
-import { CardMedia } from 'material-ui';
+import { CardMedia } from '@material-ui/core';
 
 const MenuItemImg = withContentRect('bounds')(
   ({ measureRef, contentRect, image, name }) => (

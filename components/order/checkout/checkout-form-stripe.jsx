@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
 const inputFieldStyle = {
   display: 'block',

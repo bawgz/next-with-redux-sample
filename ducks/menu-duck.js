@@ -14,7 +14,7 @@ export default (state = [], action = {}) => {
 };
 
 export const fetchMenu = () => async dispatch => {
-  const menu = await fetch('http://el-jarocho.herokuapp.com/api/menu');
+  const menu = await fetch('http://localhost:5000/api/menu');
   const json = await menu.json();
   dispatch({
     type: SET_MENU,

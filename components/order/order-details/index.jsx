@@ -7,7 +7,7 @@ import {
   Button,
   Grid,
   Divider,
-} from 'material-ui';
+} from '@material-ui/core';
 import { orderDetailsPropTypes } from '../../../constants/prop-types';
 
 import OrderItem from './order-item';
@@ -19,7 +19,7 @@ const OrderDetails = ({
   setIsCheckoutDialogOpen,
 }) => (
   <div>
-    <Card raised>
+    <Card>
       <CardContent>
         <Typography variant="headline" component="h2">
           Order Summary

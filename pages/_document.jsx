@@ -7,6 +7,7 @@ import getPageContext from '../util/get-page-context';
 class MyDocument extends Document {
   render() {
     const { pageContext } = this.props;
+
     return (
       <html lang="en" dir="ltr">
         <Head>
@@ -26,11 +27,11 @@ class MyDocument extends Document {
             content={pageContext.theme.palette.primary.main}
           />
           <script src="https://js.stripe.com/v3/" />
+          <link rel="stylesheet" type="text/css" href="/static/global.css" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
-          <link rel="stylesheet" type="text/css" href="/static/global.css" />
         </Head>
         <body>
           <Main />

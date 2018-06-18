@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, TextField, MenuItem } from 'material-ui';
-import IconButton from 'material-ui/IconButton';
-import DeleteIcon from 'material-ui-icons/Delete';
-import Typography from 'material-ui/Typography/Typography';
+import { Grid, TextField, MenuItem } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Typography from '@material-ui/core/Typography/Typography';
 
 import quantityOptions from '../../../constants/quantity-options';
 import { orderItemPropTypes } from '../../../constants/prop-types';

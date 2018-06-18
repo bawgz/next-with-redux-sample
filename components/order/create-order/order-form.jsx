@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormLabel, FormControl } from 'material-ui/Form';
-import { Grid, Button, TextField, MenuItem } from 'material-ui';
-import { withStyles } from 'material-ui/styles';
+import {
+  Grid,
+  Button,
+  TextField,
+  MenuItem,
+  FormLabel,
+  FormControl,
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 import CheckboxGroup from '../../general/checkbox-group';
 import quantityOptions from '../../../constants/quantity-options';

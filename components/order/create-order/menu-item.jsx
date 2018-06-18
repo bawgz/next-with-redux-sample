@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardContent, Typography, Grid } from 'material-ui';
+import { Card, CardContent, Typography, Grid } from '@material-ui/core';
 
 import MenuItemImg from './menu-item-img';
 import OrderForm from './order-form';

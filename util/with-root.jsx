@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MuiThemeProvider } from 'material-ui/styles';
-import CssBaseline from 'material-ui/CssBaseline';
-import Grid from 'material-ui/Grid';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 
-import getPageContext from './get-page-context';
 import NavBar from '../components/general/nav-bar';
+import getPageContext from './get-page-context';
 
 function withRoot(Component) {
   class WithRoot extends React.Component {
-    constructor(props, context) {
-      super(props, context);
+    constructor(props) {
+      super(props);
+
       this.pageContext = this.props.pageContext || getPageContext();
     }
 
