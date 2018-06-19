@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 import MenuItemImg from './menu-item-img';
 import OrderForm from './order-form';
+
+const styles = {
+  card: {
+    margin: '5px',
+  },
+};
 
 const MenuItem = ({
   name,
@@ -12,9 +19,10 @@ const MenuItem = ({
   price,
   handleAddToOrder,
   toppings,
+  classes,
 }) => (
   <div>
-    <Card raised className="menu-item-card">
+    <Card raised className={classes.card}>
       <Grid container>
         <Grid item xs={12} sm={4}>
           <MenuItemImg image={image} title={name} />
@@ -42,16 +50,6 @@ const MenuItem = ({
         </Grid>
       </Grid>
     </Card>
-    <style jsx>
-      {`
-        .menu-item-card: {
-          margin: 7px;
-        }
-        .menu-item-img: {
-          height: 200px;
-        }
-      `}
-    </style>
   </div>
 );
 
@@ -67,6 +65,9 @@ MenuItem.propTypes = {
       name: PropTypes.string,
     }),
   ).isRequired,
+  classes: PropTypes.shape({
+    card: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-export default MenuItem;
+export default withStyles(styles)(MenuItem);

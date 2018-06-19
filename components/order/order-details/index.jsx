@@ -8,18 +8,26 @@ import {
   Grid,
   Divider,
 } from '@material-ui/core';
-import { orderDetailsPropTypes } from '../../../constants/prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
+import { orderDetailsPropTypes } from '../../../constants/prop-types';
 import OrderItem from './order-item';
+
+const styles = {
+  card: {
+    margin: '5px',
+  },
+};
 
 const OrderDetails = ({
   orderDetails,
   handleRemoveFromOrder,
   handleChangeQty,
   setIsCheckoutDialogOpen,
+  classes,
 }) => (
   <div>
-    <Card>
+    <Card className={classes.card} raised>
       <CardContent>
         <Typography variant="headline" component="h2">
           Order Summary
@@ -104,6 +112,9 @@ OrderDetails.propTypes = {
   handleRemoveFromOrder: PropTypes.func.isRequired,
   handleChangeQty: PropTypes.func.isRequired,
   setIsCheckoutDialogOpen: PropTypes.func.isRequired,
+  classes: PropTypes.shape({
+    card: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
-export default OrderDetails;
+export default withStyles(styles)(OrderDetails);
