@@ -26,7 +26,7 @@ export const checkout = (orderParam, tokenId) => async dispatch => {
   console.log(JSON.stringify(order));
   const chargeInfo = { tokenId, price: order.total };
   try {
-    const charge = await fetch('http://localhost:5000/api/checkout', {
+    const charge = await fetch('/api/checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

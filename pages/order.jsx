@@ -32,8 +32,9 @@ class Order extends React.Component {
     });
   }
 
-  static async getInitialProps({ store }) {
-    await store.dispatch(fetchMenu());
+  static async getInitialProps({ store, req }) {
+    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
+    await store.dispatch(fetchMenu(baseUrl));
   }
 
   setIsCheckoutDialogOpen(isCheckoutDialogOpen) {
@@ -104,6 +105,6 @@ const mapDispatchToProps = {
 export default withRoot(
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )(Order)
+    mapDispatchToProps,
+  )(Order),
 );
