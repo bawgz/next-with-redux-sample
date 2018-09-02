@@ -14,7 +14,7 @@ const CreateOrder = ({ menu, handleAddToOrder }) => (
         image={item.image}
         price={item.price}
         handleAddToOrder={handleAddToOrder}
-        toppings={item.toppings}
+        fillings={item.fillings}
       />
     ))}
   </div>

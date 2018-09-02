@@ -5,14 +5,12 @@ import {
   Button,
   TextField,
   MenuItem,
-  FormLabel,
   FormControl,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import CheckboxGroup from '../../general/checkbox-group';
+import RadioButtonGroup from '../../general/radio-button-group';
 import quantityOptions from '../../../constants/quantity-options';
-import TWO from '../../../constants/consts';
 
 // We can inject some CSS into the DOM.
 const styles = {
@@ -29,19 +27,14 @@ class OrderForm extends Component {
     super(props);
     this.state = {
       qty: 1,
-      toppings: {},
+      filling: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.renderCheckboxGroup = this.renderCheckboxGroup.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(topping, event) {
-    const toppings = { ...this.state.toppings, [topping.name]: topping };
-    if (!event.target.checked) {
-      delete toppings[topping.name];
-    }
-    this.setState({ toppings });
+  handleChange(filling) {
+    this.setState({ filling });
   }
 
   handleSelect(name, event) {
@@ -51,65 +44,49 @@ class OrderForm extends Component {
   handleSubmit() {
     const { handleAddToOrder, name, price } = this.props;
     handleAddToOrder({ name, pricePerItem: price, ...this.state });
-    this.setState({ toppings: {}, qty: 1 });
-  }
-
-  renderCheckboxGroup(options) {
-    return (
-      <CheckboxGroup
-        options={options}
-        handleChange={this.handleChange}
-        optionsChecked={this.state.toppings}
-      />
-    );
+    this.setState({ filling: '', qty: 1 });
   }
 
   render() {
-    const { toppingsOptions, classes } = this.props;
+    const { fillingsOptions, classes } = this.props;
     return (
       <div>
         <form>
           <FormControl className={classes.fullWidth} component="fieldset">
-            <FormLabel component="legend">Toppings</FormLabel>
-            <div className="order-form-inputs">
-              <Grid container>
-                <Grid item xs={6}>
-                  {this.renderCheckboxGroup(
-                    toppingsOptions.slice(0, toppingsOptions.length / TWO),
-                  )}
-                </Grid>
-                <Grid item xs={6}>
-                  {this.renderCheckboxGroup(
-                    toppingsOptions.slice(toppingsOptions.length / TWO),
-                  )}
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    select
-                    label="QTY"
-                    value={this.state.qty}
-                    onChange={e => this.handleSelect('qty', e)}
-                    margin="normal"
-                  >
-                    {quantityOptions.map(option => (
-                      <MenuItem key={option} value={option}>
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    className={classes.buttonStyle}
-                    variant="raised"
-                    onClick={this.handleSubmit}
-                    color="primary"
-                  >
-                    Add to Order
-                  </Button>
-                </Grid>
+            <Grid container>
+              <Grid item xs={12}>
+                <RadioButtonGroup
+                  options={fillingsOptions}
+                  handleChange={this.handleChange}
+                  filling={this.state.filling}
+                />
               </Grid>
-            </div>
+              <Grid item xs={6}>
+                <TextField
+                  select
+                  label="QTY"
+                  value={this.state.qty}
+                  onChange={e => this.handleSelect('qty', e)}
+                  margin="normal"
+                >
+                  {quantityOptions.map(option => (
+                    <MenuItem key={option} value={option}>
+                      {option}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  className={classes.buttonStyle}
+                  variant="raised"
+                  onClick={this.handleSubmit}
+                  color="primary"
+                >
+                  Add to Order
+                </Button>
+              </Grid>
+            </Grid>
           </FormControl>
         </form>
         <style jsx>
@@ -134,7 +111,7 @@ OrderForm.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   handleAddToOrder: PropTypes.func.isRequired,
-  toppingsOptions: PropTypes.arrayOf(
+  fillingsOptions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,

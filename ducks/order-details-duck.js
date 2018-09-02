@@ -9,9 +9,7 @@ export default (state = defaultInitialState.orderDetails, action) => {
     case ADD_TO_ORDER: {
       const newOrder = action.payload;
       const orders = { ...state };
-      const key = `${newOrder.name}-${Object.keys(newOrder.toppings)
-        .sort()
-        .map(topping => topping)}`;
+      const key = `${newOrder.name}-${newOrder.filling}`;
       const order = orders.items[key];
       newOrder.price = newOrder.pricePerItem * newOrder.qty;
       if (order) {

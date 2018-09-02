@@ -7,10 +7,9 @@ import Typography from '@material-ui/core/Typography/Typography';
 
 import quantityOptions from '../../../constants/quantity-options';
 import { orderItemPropTypes } from '../../../constants/prop-types';
-import objectToCommaSeparatedString from '../../../util/util-methods';
 
 const OrderItem = ({
-  orderItem: { name, qty, price, toppings, key },
+  orderItem: { name, qty, price, filling, key },
   handleRemoveFromOrder,
   handleChangeQty,
 }) => (
@@ -28,9 +27,7 @@ const OrderItem = ({
         <Typography variant="subheading" component="h3">
           {name}
         </Typography>
-        <Typography color="textSecondary">
-          {objectToCommaSeparatedString(toppings)}
-        </Typography>
+        <Typography color="textSecondary">{filling}</Typography>
       </Grid>
       <Grid item xs={3}>
         <TextField

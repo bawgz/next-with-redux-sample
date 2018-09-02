@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import hashmapPropType from 'hashmap-prop-type';
 
-export const toppingsPropTypes = hashmapPropType(
+export const fillingsPropTypes = hashmapPropType(
   PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }),
 );
 
-export const toppingsArrayPropTypes = PropTypes.arrayOf(
+export const fillingsArrayPropTypes = PropTypes.arrayOf(
   PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -21,7 +21,7 @@ export const menuPropTypes = PropTypes.arrayOf(
     id: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    toppings: toppingsArrayPropTypes.isRequired,
+    fillings: fillingsArrayPropTypes.isRequired,
   }),
 );
 
@@ -38,7 +38,7 @@ export const orderItemPropTypes = PropTypes.shape({
   price: PropTypes.number.isRequired,
   pricePerItem: PropTypes.number.isRequired,
   qty: PropTypes.number.isRequired,
-  toppings: toppingsPropTypes.isRequired,
+  filling: PropTypes.string.isRequired,
 });
 
 export const orderDetailsPropTypes = PropTypes.shape({

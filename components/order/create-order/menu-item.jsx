@@ -18,7 +18,7 @@ const MenuItem = ({
   image,
   price,
   handleAddToOrder,
-  toppings,
+  fillings,
   classes,
 }) => (
   <div>
@@ -42,7 +42,7 @@ const MenuItem = ({
                   handleAddToOrder={handleAddToOrder}
                   name={name}
                   price={price}
-                  toppingsOptions={toppings}
+                  fillingsOptions={fillings}
                 />
               </Grid>
             </Grid>
@@ -59,7 +59,7 @@ MenuItem.propTypes = {
   image: PropTypes.string.isRequired,
   handleAddToOrder: PropTypes.func.isRequired,
   price: PropTypes.number.isRequired,
-  toppings: PropTypes.arrayOf(
+  fillings: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
