@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { StripeProvider } from 'react-stripe-elements';
 
-import { menuPropTypes, orderDetailsPropTypes } from '../constants/prop-types';
+import {
+  menuPropTypes,
+  orderDetailsPropTypes,
+  addressPropTypes,
+} from '../constants/prop-types';
 import OrderComponent from '../components/order';
 import {
   addToOrder,
@@ -11,6 +15,7 @@ import {
   fetchMenu,
   changeQty,
   checkout,
+  setAddress,
 } from '../ducks';
 import withRoot from '../util/with-root';
 
@@ -49,6 +54,8 @@ class Order extends React.Component {
       menu,
       changeQtyAction,
       checkoutAction,
+      address,
+      setAddressAction,
     } = this.props;
     const {
       loadSqript,
@@ -56,6 +63,7 @@ class Order extends React.Component {
       allScriptsLoaded,
       isCheckoutDialogOpen,
     } = this.state;
+    console.log(setAddressAction);
     return (
       <div>
         <StripeProvider stripe={this.state.stripe}>
@@ -73,6 +81,8 @@ class Order extends React.Component {
             checkout={checkoutAction}
             isCheckoutDialogOpen={isCheckoutDialogOpen}
             setIsCheckoutDialogOpen={this.setIsCheckoutDialogOpen}
+            address={address}
+            handleSubmitAddress={setAddressAction}
           />
         </StripeProvider>
       </div>
@@ -87,11 +97,18 @@ Order.propTypes = {
   menu: menuPropTypes.isRequired,
   changeQtyAction: PropTypes.func.isRequired,
   checkoutAction: PropTypes.func.isRequired,
+  address: addressPropTypes,
+  setAddressAction: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ orderDetails, menu }) => ({
+Order.defaultProps = {
+  address: {},
+};
+
+const mapStateToProps = ({ orderDetails, menu, address }) => ({
   orderDetails,
   menu,
+  address,
 });
 
 const mapDispatchToProps = {
@@ -100,6 +117,7 @@ const mapDispatchToProps = {
   fetchMenuAction: fetchMenu,
   changeQtyAction: changeQty,
   checkoutAction: checkout,
+  setAddressAction: setAddress,
 };
 
 export default withRoot(

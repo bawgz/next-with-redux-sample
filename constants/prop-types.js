@@ -45,3 +45,10 @@ export const orderDetailsPropTypes = PropTypes.shape({
   items: hashmapPropType(orderItemPropTypes).isRequired,
   total: PropTypes.number.isRequired,
 });
+
+export const addressPropTypes = PropTypes.shape({
+  street: PropTypes.string,
+  city: PropTypes.string,
+  state: PropTypes.string,
+  zip: PropTypes.string,
+});

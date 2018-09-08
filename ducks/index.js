@@ -10,6 +10,7 @@ import orderDetails, {
 import activeOrders, { getActiveOrders } from './active-orders-duck';
 import loading, { setLoading } from './loading-duck';
 import userOrders, { checkout } from './user-orders-duck';
+import address, { setAddress } from './address-duck';
 
 export {
   fetchMenu,
@@ -19,6 +20,7 @@ export {
   changeQty,
   setLoading,
   checkout,
+  setAddress,
 };
 
 export const defaultInitialState = {
@@ -35,6 +37,7 @@ export const reducer = combineReducers({
   activeOrders,
   loading,
   userOrders,
+  address,
 });
 
 export const initStore = (initialState = defaultInitialState) =>
