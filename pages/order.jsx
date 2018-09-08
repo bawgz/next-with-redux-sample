@@ -63,7 +63,6 @@ class Order extends React.Component {
       allScriptsLoaded,
       isCheckoutDialogOpen,
     } = this.state;
-    console.log(setAddressAction);
     return (
       <div>
         <StripeProvider stripe={this.state.stripe}>

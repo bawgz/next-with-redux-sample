@@ -32,7 +32,6 @@ class AddressForm extends Component {
 
   render() {
     const { classes, handleSubmitAddress } = this.props;
-    console.log(handleSubmitAddress);
     const { street, city, state, zip } = this.state;
     return (
       <form noValidate autoComplete="off">
