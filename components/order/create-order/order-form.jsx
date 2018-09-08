@@ -89,19 +89,6 @@ class OrderForm extends Component {
             </Grid>
           </FormControl>
         </form>
-        <style jsx>
-          {`
-            .full-width: {
-              width: 100% !important;
-            }
-            .order-form-inputs {
-              margin-left: 20px;
-            }
-            .add-to-order-btn {
-              float: right;
-            }
-          `}
-        </style>
       </div>
     );
   }

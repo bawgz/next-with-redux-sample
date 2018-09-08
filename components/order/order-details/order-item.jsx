@@ -46,13 +46,6 @@ const OrderItem = ({
         <Typography>{`$${price}`}</Typography>
       </Grid>
     </Grid>
-    <style jsx>
-      {`
-        .order-item {
-          margin-top: 10px;
-        }
-      `}
-    </style>
   </div>
 );
 
