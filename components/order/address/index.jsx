@@ -3,13 +3,13 @@ import React from 'react';
 import AddressForm from './address-form';
 
 const Address = props => (
-  <div style={{ margin: 'auto', width: '50%' }} className="address">
+  <div className="address">
     <AddressForm {...props} />
     <style jsx>
       {`
-        div.address: {
+        .address {
           margin: auto;
-          width: 50%t;
+          width: 50%;
         }
       `}
     </style>
