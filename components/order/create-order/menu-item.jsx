@@ -33,7 +33,7 @@ const MenuItem = ({
               container
               direction="column"
               justify="space-between"
-              spacing="16"
+              spacing={16}
             >
               <Grid item>
                 <Typography variant="headline" component="h2">
