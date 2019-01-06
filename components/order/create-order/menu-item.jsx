@@ -29,7 +29,12 @@ const MenuItem = ({
         </Grid>
         <Grid item xs={12} sm={8}>
           <CardContent>
-            <Grid container direction="column" justify="space-between">
+            <Grid
+              container
+              direction="column"
+              justify="space-between"
+              spacing="16"
+            >
               <Grid item>
                 <Typography variant="headline" component="h2">
                   {name}
