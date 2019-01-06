@@ -46,7 +46,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.1.0",
     "stripe": "^5.8.0",
-    "styled-jsx": "^2.2.6"
+    "styled-jsx": "^2.2.6",
+    "uuid": "^3.3.2"
   },
   "license": "ISC",
   "devDependencies": {

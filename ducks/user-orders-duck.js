@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import uuidv1 from 'uuid/v1';
 
 import { setLoading } from './index';
 
@@ -7,8 +8,6 @@ const ADD_USER_ORDER = 'ADD_USER_ORDER';
 export default (state = [], action) => {
   switch (action.type) {
     case ADD_USER_ORDER: {
-      console.log(state);
-      console.log(action.payload);
       return [...state, action.payload];
     }
     default: {
@@ -36,13 +35,19 @@ export const checkout = (orderParam, tokenId) => async dispatch => {
     console.log(charge);
     if (charge.status === 200) {
       order.charge = await charge.json();
+      order.id = uuidv1();
       console.log(order);
+      const response = await fetch('/api/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order),
+      });
       dispatch({
         type: ADD_USER_ORDER,
-        payload: order,
+        payload: response,
       });
-    } else {
-      console.log('issa error');
     }
   } catch (err) {
     throw err;

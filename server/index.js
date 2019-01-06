@@ -42,6 +42,17 @@ app
       });
     });
 
+    server.post('/api/order', async (req, res) => {
+      console.log('----------------------API/ORDER--------------------');
+      console.log(req.body);
+      try {
+        const response = await dataService.insertOrder(req.body);
+        res.send(response);
+      } catch (err) {
+        throw err;
+      }
+    });
+
     server.get('*', (req, res) => handle(req, res));
 
     server.listen(port, err => {

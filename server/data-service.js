@@ -8,6 +8,13 @@ const dataService = {
     const collection = db.db('heroku_sp1168cp').collection('menu');
     return collection.find({}).toArray();
   },
+  insertOrder: async order => {
+    const db = await mongodb.MongoClient.connect(uri);
+    const collection = db.db('heroku_sp1168cp').collection('orders');
+    const result = await collection.insertOne(order);
+    console.log(result);
+    return result;
+  },
 };
 
 module.exports = dataService;

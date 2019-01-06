@@ -28,7 +28,7 @@ export const defaultInitialState = {
   orderDetails: { items: {}, total: 0 },
   activeOrders: [],
   loading: false,
-  userOrders: {},
+  userOrders: [],
 };
 
 export const reducer = combineReducers({
