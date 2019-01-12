@@ -11,9 +11,8 @@ const dataService = {
   insertOrder: async order => {
     const db = await mongodb.MongoClient.connect(uri);
     const collection = db.db('heroku_sp1168cp').collection('orders');
-    const result = await collection.insertOne(order);
-    console.log(result);
-    return result;
+    await collection.insertOne(order);
+    return order;
   },
 };
 

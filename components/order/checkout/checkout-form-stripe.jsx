@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import Button from '@material-ui/core/Button';
+import Router from 'next/router';
 
 const inputFieldStyle = {
   display: 'block',
@@ -57,6 +58,7 @@ class CheckoutFormStripe extends React.Component {
     const order = { ...orderDetails, name };
     if (!resp.error) {
       await checkout(order, resp.token.id);
+      Router.push('/order-confirmation');
     } else {
       this.setState({ formError: resp.error.message });
     }
