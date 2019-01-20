@@ -52,3 +52,12 @@ export const addressPropTypes = PropTypes.shape({
   state: PropTypes.string,
   zip: PropTypes.string,
 });
+
+export const confirmedOrderPropTypes = PropTypes.shape({
+  address: addressPropTypes.isRequired,
+  ...orderDetailsPropTypes,
+  name: PropTypes.string.isRequired,
+  chargeId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
+});

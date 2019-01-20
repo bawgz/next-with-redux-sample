@@ -9,7 +9,7 @@ import orderDetails, {
 } from './order-details-duck';
 import activeOrders, { getActiveOrders } from './active-orders-duck';
 import loading, { setLoading } from './loading-duck';
-import userOrders, { checkout } from './user-orders-duck';
+import confirmedOrder, { checkout } from './confirmed-order-duck';
 import address, { setAddress } from './address-duck';
 
 export {
@@ -28,7 +28,7 @@ export const defaultInitialState = {
   orderDetails: { items: {}, total: 0 },
   activeOrders: [],
   loading: false,
-  userOrders: [],
+  confirmedOrder: {},
 };
 
 export const reducer = combineReducers({
@@ -36,7 +36,7 @@ export const reducer = combineReducers({
   orderDetails,
   activeOrders,
   loading,
-  userOrders,
+  confirmedOrder,
   address,
 });
 

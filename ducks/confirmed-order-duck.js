@@ -3,12 +3,12 @@ import uuidv1 from 'uuid/v1';
 
 import { setLoading } from './index';
 
-const ADD_USER_ORDER = 'ADD_USER_ORDER';
+const SET_CONFIRMED_ORDER = 'SET_CONFIRMED_ORDER';
 
 export default (state = [], action) => {
   switch (action.type) {
-    case ADD_USER_ORDER: {
-      return [...state, action.payload];
+    case SET_CONFIRMED_ORDER: {
+      return action.payload;
     }
     default: {
       return state;
@@ -16,11 +16,11 @@ export default (state = [], action) => {
   }
 };
 
-export const checkout = (orderParam, tokenId) => async dispatch => {
+export const checkout = (orderParam, address, tokenId) => async dispatch => {
   dispatch(setLoading(true));
   // make this a post
   // probably better to fetch from db instead of add to redux like this/????
-  const order = { ...orderParam };
+  const order = { ...orderParam, address };
   const chargeInfo = { tokenId, price: order.total };
   try {
     const charge = await fetch('/api/checkout', {
@@ -33,7 +33,8 @@ export const checkout = (orderParam, tokenId) => async dispatch => {
     if (charge.status !== 200) {
       throw new Error(charge.statusText);
     }
-    order.charge = await charge.json();
+    const chargeJson = await charge.json();
+    order.chargeId = chargeJson.id;
     order.id = uuidv1();
     const response = await fetch('/api/order', {
       method: 'POST',
@@ -44,7 +45,7 @@ export const checkout = (orderParam, tokenId) => async dispatch => {
     });
     const json = await response.json();
     return dispatch({
-      type: ADD_USER_ORDER,
+      type: SET_CONFIRMED_ORDER,
       payload: json,
     });
   } catch (err) {

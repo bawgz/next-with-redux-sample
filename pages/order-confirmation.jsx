@@ -1,5 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const OrderConfirmation = () => <div>Hello World</div>;
+import withRoot from '../util/with-root';
+import { confirmedOrderPropTypes } from '../constants/prop-types';
 
-export default OrderConfirmation;
+const OrderConfirmation = ({ order }) => <div>Order Number: {order.id}</div>;
+
+OrderConfirmation.propTypes = {
+  order: confirmedOrderPropTypes.isRequired,
+};
+
+const mapStateToProps = ({ confirmedOrder }) => ({
+  order: confirmedOrder,
+});
+
+export default withRoot(connect(mapStateToProps)(OrderConfirmation));

@@ -45,7 +45,7 @@ class CheckoutFormStripe extends React.Component {
 
   async handleOnSubmit(ev) {
     const { name } = this.state;
-    const { stripe, checkout, orderDetails } = this.props;
+    const { stripe, checkout, orderDetails, address } = this.props;
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault();
 
@@ -57,7 +57,7 @@ class CheckoutFormStripe extends React.Component {
     console.log('Received Stripe token:', resp.token);
     const order = { ...orderDetails, name };
     if (!resp.error) {
-      await checkout(order, resp.token.id);
+      await checkout(order, address, resp.token.id);
       Router.push('/order-confirmation');
     } else {
       this.setState({ formError: resp.error.message });

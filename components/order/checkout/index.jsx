@@ -5,7 +5,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Elements } from 'react-stripe-elements';
 
-import { orderDetailsPropTypes } from '../../../constants/prop-types';
+import {
+  orderDetailsPropTypes,
+  addressPropTypes,
+} from '../../../constants/prop-types';
 import CheckoutFormStripe from './checkout-form-stripe';
 
 const Checkout = ({
@@ -13,6 +16,7 @@ const Checkout = ({
   setIsCheckoutDialogOpen,
   orderDetails,
   checkout,
+  address,
 }) => (
   <div>
     <Dialog
@@ -22,7 +26,11 @@ const Checkout = ({
       <DialogTitle>Checkout</DialogTitle>
       <DialogContent>
         <Elements>
-          <CheckoutFormStripe orderDetails={orderDetails} checkout={checkout} />
+          <CheckoutFormStripe
+            orderDetails={orderDetails}
+            checkout={checkout}
+            address={address}
+          />
         </Elements>
       </DialogContent>
     </Dialog>
@@ -34,6 +42,7 @@ Checkout.propTypes = {
   setIsCheckoutDialogOpen: PropTypes.func.isRequired,
   orderDetails: orderDetailsPropTypes.isRequired,
   checkout: PropTypes.func.isRequired,
+  address: addressPropTypes.isRequired,
 };
 
 export default Checkout;

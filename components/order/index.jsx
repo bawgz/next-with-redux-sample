@@ -47,6 +47,7 @@ const Order = ({
           setIsCheckoutDialogOpen={setIsCheckoutDialogOpen}
           orderDetails={orderDetails}
           checkout={checkout}
+          address={address}
         />
       </div>
     )}
