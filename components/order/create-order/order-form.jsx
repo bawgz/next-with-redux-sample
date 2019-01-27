@@ -79,7 +79,7 @@ class OrderForm extends Component {
               <Grid item xs={6}>
                 <Button
                   className={classes.buttonStyle}
-                  variant="raised"
+                  variant="contained"
                   onClick={this.handleSubmit}
                   color="primary"
                 >

@@ -29,7 +29,7 @@ const OrderDetails = ({
   <div>
     <Card className={classes.card} raised>
       <CardContent>
-        <Typography variant="headline" component="h2">
+        <Typography variant="h5" component="h2">
           Order Summary
         </Typography>
         {Object.keys(orderDetails.items).length === 0 ? (
@@ -81,7 +81,7 @@ const OrderDetails = ({
                   <div className="margin-top-10">
                     <Button
                       onClick={() => setIsCheckoutDialogOpen(true)}
-                      variant="raised"
+                      variant="contained"
                       color="primary"
                     >
                       Checkout

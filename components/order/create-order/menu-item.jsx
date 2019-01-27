@@ -36,7 +36,7 @@ const MenuItem = ({
               spacing={16}
             >
               <Grid item>
-                <Typography variant="headline" component="h2">
+                <Typography variant="h5" component="h2">
                   {name}
                 </Typography>
                 <Typography component="p">{description}</Typography>

@@ -24,7 +24,7 @@ const OrderItem = ({
         </IconButton>
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="subheading" component="h3">
+        <Typography variant="subtitle1" component="h3">
           {name}
         </Typography>
         <Typography color="textSecondary">{filling}</Typography>
