@@ -55,7 +55,8 @@ export const addressPropTypes = PropTypes.shape({
 
 export const confirmedOrderPropTypes = PropTypes.shape({
   address: addressPropTypes.isRequired,
-  ...orderDetailsPropTypes,
+  items: hashmapPropType(orderItemPropTypes).isRequired,
+  total: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   chargeId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
