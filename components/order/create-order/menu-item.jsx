@@ -48,6 +48,7 @@ const MenuItem = ({
                   name={name}
                   price={price}
                   fillingsOptions={fillings}
+                  image={image}
                 />
               </Grid>
             </Grid>

@@ -42,8 +42,8 @@ class OrderForm extends Component {
   }
 
   handleSubmit() {
-    const { handleAddToOrder, name, price } = this.props;
-    handleAddToOrder({ name, pricePerItem: price, ...this.state });
+    const { handleAddToOrder, name, price, image } = this.props;
+    handleAddToOrder({ name, pricePerItem: price, image, ...this.state });
     this.setState({ filling: '', qty: 1 });
   }
 
@@ -108,6 +108,7 @@ OrderForm.propTypes = {
     fullWidth: PropTypes.string.isRequired,
     buttonStyle: PropTypes.string.isRequired,
   }).isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(OrderForm);
