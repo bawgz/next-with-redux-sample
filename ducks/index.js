@@ -19,6 +19,7 @@ const CONFIRMED_ORDER = {
     'Empanadas-Chicharron': {
       name: 'Empanadas',
       pricePerItem: 20,
+      image: '/static/empanadas.jpg',
       qty: 1,
       filling: 'Chicharron',
       price: 20,

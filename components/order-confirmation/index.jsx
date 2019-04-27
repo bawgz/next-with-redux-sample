@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import { confirmedOrderPropTypes } from '../../constants/prop-types';
+import MenuItem from '../order/create-order/menu-item';
 
 const OrderConfirmation = ({ order }) => (
   <div>
@@ -11,6 +12,19 @@ const OrderConfirmation = ({ order }) => (
         Order Confirmation
       </Typography>
       <Typography component="p">Order Number: {order.id}</Typography>
+      {Object.keys(order.items).map(itemKey => {
+        const item = order.items[itemKey];
+        return (
+          <MenuItem
+            key={item.id}
+            name={item.name}
+            description={item.description}
+            image={item.image}
+            price={item.price}
+            fillings={item.fillings}
+          />
+        );
+      })}
     </Paper>
   </div>
 );
