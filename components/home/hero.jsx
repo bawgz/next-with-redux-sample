@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 const Hero = () => (
   <div className="hero">
-    <Link href="/order">
+    <Link prefetch href="/order">
       <Button variant="contained" color="primary">
         Order Now
       </Button>
