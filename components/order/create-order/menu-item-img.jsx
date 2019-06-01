@@ -9,6 +9,7 @@ const MenuItemImg = withContentRect('bounds')(
         style={{
           height: contentRect.bounds.width,
           marginTop: '16px',
+          marginRight: '5px',
           border: 'thin solid black',
         }}
         image={image}

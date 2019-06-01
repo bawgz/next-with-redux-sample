@@ -25,12 +25,17 @@ const OrderDetails = ({
   handleChangeQty,
   setIsCheckoutDialogOpen,
   classes,
+  orderId = '',
+  displayImgs = false,
 }) => (
   <div>
     <Card className={classes.card} raised>
       <CardContent>
         <Typography variant="h5" component="h2">
           Order Summary
+        </Typography>
+        <Typography variant="subtitle">
+          {orderId !== '' && `Order ID: ${orderId}`}
         </Typography>
         {Object.keys(orderDetails.items).length === 0 ? (
           <div>
@@ -62,6 +67,7 @@ const OrderDetails = ({
                 orderItem={orderDetails.items[orderItem]}
                 handleRemoveFromOrder={handleRemoveFromOrder}
                 handleChangeQty={handleChangeQty}
+                displayImg={displayImgs}
               />
             ))}
             <Grid container>
@@ -76,19 +82,21 @@ const OrderDetails = ({
                 <Typography>{`$${orderDetails.total}`}</Typography>
               </Grid>
               <Grid item />
-              <Grid container justify="center">
-                <Grid item>
-                  <div className="margin-top-10">
-                    <Button
-                      onClick={() => setIsCheckoutDialogOpen(true)}
-                      variant="contained"
-                      color="primary"
-                    >
-                      Checkout
-                    </Button>
-                  </div>
+              {setIsCheckoutDialogOpen && (
+                <Grid container justify="center">
+                  <Grid item>
+                    <div className="margin-top-10">
+                      <Button
+                        onClick={() => setIsCheckoutDialogOpen(true)}
+                        variant="contained"
+                        color="primary"
+                      >
+                        Checkout
+                      </Button>
+                    </div>
+                  </Grid>
                 </Grid>
-              </Grid>
+              )}
             </Grid>
           </div>
         )}
@@ -115,6 +123,8 @@ OrderDetails.propTypes = {
   classes: PropTypes.shape({
     card: PropTypes.string.isRequired,
   }).isRequired,
+  orderId: PropTypes.string.isRequired,
+  displayImgs: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(OrderDetails);
